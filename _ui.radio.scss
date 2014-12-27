@@ -1,0 +1,126 @@
+
+/* ------------------- */
+/* ::: Yupik Radio ::: */
+/* ------------------- */
+
+// The html
+
+// <div class="block-custom-radio left">
+//     <input type="radio" class="custom-radio" id="mme" name="customer">
+//     <label for="mme">
+//         <span class="custom-radio-outer">&nbsp;</span>
+//         <span class="custom-radio-label">Mme</span>
+//     </label>
+// </div>
+// <div class="block-custom-radio left">
+//     <input type="radio" class="custom-radio" id="mlle" name="customer">
+//     <label for="mlle">
+//         <span class="custom-radio-outer">&nbsp;</span>
+//         <span class="custom-radio-label">Mlle</span>
+//     </label>
+// </div>
+
+// Default variable
+$yupik-checkbox-namespace: $inuit-namespace !default;
+
+$yupik-radio-width: 20px !default;
+$yupik-radio-inner-space: 5px !default;
+$yupik-radio-border: true !default;
+$yupik-radio-border-width: 1px !default;
+$yupik-radio-border-color: black !default;
+$yupik-radio-border-color-active: null !default;
+$yupik-radio-background-color: null !default;
+$yupik-radio-background-color-active: #db6313 !default;
+$yupik-radio-box-shadow: null !default;
+
+
+@if($yupik-radio-width <= ($yupik-radio-inner-space + $yupik-radio-border-width) ) {
+    @warn "The addition of $yupik-radio-inner-space and $yupik-radio-border-width can not be more than $yupik-radio-width";
+}
+
+
+// Calculation
+@if($yupik-radio-border == false) {
+    $yupik-radio-border-width: 0;
+}
+
+// The padding should be divided by 2, so if odd, is incremented by 1
+@if( even($yupik-radio-width - $yupik-radio-border-width) == false ) {
+    $yupik-radio-width: $yupik-radio-width + 1px;
+}
+
+
+// The SCSS
+.yupik-radio {
+    position: relative;
+
+    label {
+        position: relative;
+        display: block;
+    }
+}
+
+.yupik-radio__outer {
+    float: left;
+    position: absolute; left: 0; top: 0;
+    display: inline-block;
+    width: 0; height: 0;
+    background-color: $yupik-radio-background-color;
+    padding: ($yupik-radio-width - $yupik-radio-border-width) / 2;
+    @include vendor(border-radius, $yupik-radio-width * 2);
+    @include vendor(appearance, none);
+
+    @if( $yupik-radio-box-shadow != null ) {   
+        @include vendor(box-shadow, $yupik-radio-box-shadow);
+    }
+
+    @if($yupik-radio-border) {
+        border: $yupik-radio-border-width solid $yupik-radio-border-color;
+
+        &:active{
+            border: $yupik-radio-border-width solid $yupik-radio-border-color;
+        }
+    }
+}
+
+.yupik-radio__label {
+    display: block;
+    margin-left: $yupik-radio-width + 5px;
+}
+
+.yupik-radio__input { 
+    display: none !important;
+}
+
+// Active state
+.yupik-radio__input:checked {
+
+    & + label .yupik-radio__outer {
+        background-color: $yupik-radio-background-color;
+
+        // Inner of radio
+        &:after {
+            content: '';
+            position: absolute;
+            left: $yupik-radio-inner-space;
+            top: $yupik-radio-inner-space;
+            width: $yupik-radio-width - ($yupik-radio-inner-space * 2) - $yupik-radio-border-width;
+            height: $yupik-radio-width - ($yupik-radio-inner-space * 2) - $yupik-radio-border-width;
+            background: $yupik-radio-background-color-active;
+            @include vendor(border-radius, $yupik-radio-width * 2);
+
+        }
+    }
+
+    @if($yupik-radio-border) {
+        & + label .yupik-radio-outer,  
+        & + label .yupik-radio-outer:active { border-color: $yupik-radio-border-color-active }
+    }
+}
+
+
+// IE8
+.lte9 {
+    
+    .yupik-radio { display: block !important }
+}

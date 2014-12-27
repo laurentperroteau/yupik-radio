@@ -1,0 +1,30 @@
+{
+  "name": "yupik-radio",
+  "version": "0.0.1",
+  "homepage": "https://github.com/laurentperroteau/yupik-radio",
+  "authors": [
+    "laurentperroteau <laurentperroteau@gmail.com>"
+  ],
+  "description": "Styling input radio without Javascript and without lose user experience",
+  "main": "_ui.checkbox.scss",
+  "keywords": [
+    "grandwazoo",
+    "inuitcss",
+    "oocss",
+    "sass",
+    "scss",
+    "css"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "inuit-box-sizing": "~0.2.0",
+    "yupik-mixin-vendor": "~0.0.1"
+  }
+}
