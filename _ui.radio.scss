@@ -63,7 +63,7 @@ $yupik-radio-box-shadow: null !default;
 .yupik-radio__outer {
     float: left;
     position: absolute; left: 0; top: 0;
-    display: inline-block;
+    display: block;
     width: 0; height: 0;
     background-color: $yupik-radio-background-color;
     padding: ($yupik-radio-width - $yupik-radio-border-width) / 2;
