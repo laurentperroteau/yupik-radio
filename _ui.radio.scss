@@ -88,8 +88,16 @@ $yupik-radio-box-shadow: null !default;
     margin-left: $yupik-radio-width + 5px;
 }
 
+// @see: http://getbootstrap.com/css/#callout-tables-context-accessibility
 .yupik-radio__input { 
-    display: none !important;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0; 
 }
 
 // Active state
@@ -122,5 +130,13 @@ $yupik-radio-box-shadow: null !default;
 // IE8
 .lte9 {
     
-    .yupik-radio { display: block !important }
+    .yupik-radio {
+        position: relative;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+        clip: auto;
+    }
 }
