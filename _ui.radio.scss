@@ -21,7 +21,7 @@
 // </div>
 
 // Default variable
-$yupik-checkbox-namespace: $inuit-namespace !default;
+$yupik-radio-namespace: $inuit-namespace !default;
 
 $yupik-radio-width: 20px !default;
 $yupik-radio-inner-space: 5px !default;
@@ -51,7 +51,7 @@ $yupik-radio-box-shadow: null !default;
 
 
 // The SCSS
-.yupik-radio {
+.#{$yupik-radio-namespace}radio {
     position: relative;
 
     label {
@@ -60,7 +60,7 @@ $yupik-radio-box-shadow: null !default;
     }
 }
 
-.yupik-radio__outer {
+.#{$yupik-radio-namespace}radio__outer {
     float: left;
     position: absolute; left: 0; top: 0;
     display: block;
@@ -83,13 +83,13 @@ $yupik-radio-box-shadow: null !default;
     }
 }
 
-.yupik-radio__label {
+.#{$yupik-radio-namespace}radio__label {
     display: block;
     margin-left: $yupik-radio-width + 5px;
 }
 
 // @see: http://getbootstrap.com/css/#callout-tables-context-accessibility
-.yupik-radio__input { 
+.#{$yupik-radio-namespace}radio__input { 
     position: absolute;
     width: 1px;
     height: 1px;
@@ -101,9 +101,9 @@ $yupik-radio-box-shadow: null !default;
 }
 
 // Active state
-.yupik-radio__input:checked {
+.#{$yupik-radio-namespace}radio__input:checked {
 
-    & + label .yupik-radio__outer {
+    & + label .#{$yupik-radio-namespace}radio__outer {
         background-color: $yupik-radio-background-color;
 
         // Inner of radio
@@ -130,7 +130,7 @@ $yupik-radio-box-shadow: null !default;
 // IE8
 .lte9 {
     
-    .yupik-radio {
+    .#{$yupik-radio-namespace}radio {
         position: relative;
         width: auto;
         height: auto;
